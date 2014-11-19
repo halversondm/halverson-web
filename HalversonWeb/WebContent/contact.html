@@ -54,30 +54,49 @@
 
 	<div class="container" role="main">
 		<h2>Contact Information</h2>
-		<p>
-			Dan's email:&nbsp;<a href="mailto:daniel.m.halverson@gmail.com">daniel.m.halverson@gmail.com</a>
-		</p>
-		<p>
-			Dan's Twitter handle:&nbsp; <a href="https://twitter.com/halversondm"
-				class="twitter-follow-button" data-show-count="false"
-				data-size="large">Follow @halversondm</a>
-			<script>
-				!function(d, s, id) {
-					var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/
-							.test(d.location) ? 'http' : 'https';
-					if (!d.getElementById(id)) {
-						js = d.createElement(s);
-						js.id = id;
-						js.src = p + '://platform.twitter.com/widgets.js';
-						fjs.parentNode.insertBefore(js, fjs);
-					}
-				}(document, 'script', 'twitter-wjs');
-			</script>
-		<p>Follow Dan on Google+&nbsp;</p>
-		<div class="g-follow" data-annotation="bubble" data-height="24"
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<td><h4>Dan's Contact Information</h4></td>
+			</tr>
+			</thead>
+			<tbody>			
+			<tr>
+				<td>Email</td>
+				<td><a href="mailto:daniel.m.halverson@gmail.com">daniel.m.halverson@gmail.com</a></td>
+			</tr>
+			<tr>
+				<td>Twitter</td>
+				<td><a href="https://twitter.com/halversondm"
+					class="twitter-follow-button" data-show-count="false"
+					data-size="large">Follow @halversondm</a> <script>
+						!function(d, s, id) {
+							var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/
+									.test(d.location) ? 'http' : 'https';
+							if (!d.getElementById(id)) {
+								js = d.createElement(s);
+								js.id = id;
+								js.src = p
+										+ '://platform.twitter.com/widgets.js';
+								fjs.parentNode.insertBefore(js, fjs);
+							}
+						}(document, 'script', 'twitter-wjs');
+					</script></td>
+			</tr>
+			<tr>
+				<td>Google+</td>
+				<td><div class="g-follow" data-annotation="bubble" data-height="24"
 			data-href="https://plus.google.com/u/0/114718071449100470041"
-			data-rel="author"></div>
-
+			data-rel="author"></div></td>
+			</tr>
+			<tr>
+				<td>Linkedin</td>
+				<td><script type="IN/MemberProfile"
+				data-id="http://www.linkedin.com/in/dmhalverson"
+				data-format="inline" data-related="false"></script></td>
+			</tr>
+			</tbody>
+		</table>
 		<hr>
 
 		<footer>
@@ -95,5 +114,6 @@
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="http://platform.linkedin.com/in.js"></script>
 </body>
 </html>
