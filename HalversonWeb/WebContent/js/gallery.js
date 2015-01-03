@@ -82,7 +82,7 @@ var generateGallery = {
 		process: function(firstPhotoNumber, lastPhotoNumber, thisPage, totalPages) {
 			var html = '';
 			html += '<ul class="row">'
-			html += '<li class="col-lg-12"><h1 class="age-header">Thumbnail Gallery</h1></li>';
+			html += '<li class="col-lg-12"></li>';
 			for(i = firstPhotoNumber; i <= lastPhotoNumber; i++) {
 				html += '<li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img class="img-responsive" src="./photos/photo' + [i] + '.jpg" /></li>';
 			};
