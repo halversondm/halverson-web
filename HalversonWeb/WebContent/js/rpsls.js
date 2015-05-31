@@ -7,14 +7,17 @@ $('#human :button').click(function() {
 	$('#'+ player2 + '2').addClass("btn-danger");
 	game.takeTurn();
 	var message = game.getResult() + "</br>"
+	var alertStyle = "alert-success";
 	if (game.getWinner() === "Player 1") {
 		message = message + "<b>You win!</b>";
 	} else if (game.getWinner() === "Player 2") {
 		message = message + "<b>The computer wins!</b>";
+		alertStyle = "alert-danger";
 	} else {
 		message = message + "<b>" + game.getWinner() + "</b>";
+		alertStyle = "alert-warning";
 	}
-	game.success(message);
+	game.success(message, alertStyle);
 });
 
 var randomizedPick = (function() {
@@ -206,11 +209,10 @@ var game = (function() {
 		$('#human :button').removeClass("btn-success");
 	}
 	
-	function success(message) {
-		$('#alert_placeholder')
-				.html(
-						'<div class="alert alert-success" role="alert">'
-								+ message + '</div>');
+	function success(message, alertStyle) {
+		var html = '<div class="alert ' + alertStyle + '" role="alert">'
+			+ message + '</div>'
+		$('#alert_placeholder').html(html);
 	}
 	
 	return {
