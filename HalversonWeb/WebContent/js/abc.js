@@ -3,6 +3,38 @@ $(document).ready(function(){
 		var date = new Date();
 		$('#dateTime').html(date.toLocaleString());
 	});
+	$('input:radio[name=antecedent]').click(function(event) {
+		if ($(this).val() === "Other") {
+			$('#antecedentOther').prop("disabled", false);
+		} else {
+			$('#antecedentOther').val('');
+			$('#antecedentOther').prop("disabled", true);
+		}
+	});
+	$('input:checkbox[name=behavior][value=Other]').click(function(event) {
+		if ($(this).is(":checked")) {
+			$('#behaviorOther').prop("disabled", false);
+		} else {
+			$('#behaviorOther').val('');
+			$('#behaviorOther').prop("disabled", true);
+		}
+	});
+	$('input:checkbox[name=people][value=Other]').click(function(event) {
+		if ($(this).is(":checked")) {
+			$('#peopleOther').prop("disabled", false);
+		} else {
+			$('#peopleOther').val('');
+			$('#peopleOther').prop("disabled", true);
+		}
+	});
+	$('input:checkbox[name=consequence][value=Other]').click(function(event) {
+		if ($(this).is(":checked")) {
+			$('#consequenceOther').prop("disabled", false);
+		} else {
+			$('#consequenceOther').val('');
+			$('#consequenceOther').prop("disabled", true);
+		}
+	});
 	$('#save').click(function(event) {
 		event.preventDefault();
 		var abcChecklist = new Object();
