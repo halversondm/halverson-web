@@ -11,6 +11,10 @@
 <link rel="icon" href="../images/favicon.ico">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css" rel="stylesheet">
+<!--
+<link href="../test/bootstrap.css" rel="stylesheet">
+<link href="../test/bootstrap-theme.css" rel="stylesheet">
+-->
 <link href="../css/jumbotron.css" rel="stylesheet">
 </head>
 
@@ -319,12 +323,22 @@
 					<input class="btn btn-success" type="submit" value="Save" id="save">
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<div id="fromDatabase"></div>
-				</div>
-			</div>
 		</form>
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="message"></div>
+			</div>
+		</div>
+		<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body"></div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
 		<hr>
 		<footer>
 			<p>&copy; dmhweb.org 2015</p>
@@ -334,6 +348,10 @@
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<!--
+	<script src="../test/jquery-1.11.1.min.js"></script>
+	<script src="../test/bootstrap.js"></script>
+	-->
 	<script src="../js/abc.js"></script>
 </body>
 </html>
