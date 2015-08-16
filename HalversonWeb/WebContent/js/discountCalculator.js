@@ -1,3 +1,5 @@
+'use strict';
+
 $('#reset').click(function () {
     calculator.clear();
 });
@@ -43,15 +45,13 @@ var calculator = (function () {
     function danger(message) {
         $('#alert_placeholder')
             .append(
-            '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button><strong>Error! </strong>'
-            + message + '</div>');
+            '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button><strong>Error! </strong>' + message + '</div>');
     }
 
     function success(message) {
         $('#alert_placeholder')
             .html(
-            '<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>'
-            + message + '</div>');
+            '<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>' + message + '</div>');
     }
 
     function clear() {
@@ -67,8 +67,7 @@ var calculator = (function () {
             newPrice = firstCalc - (firstCalc * (discount2 / 100));
         }
         finalPrice = newPrice.toFixed(2);
-        success('Your final price is $' + finalPrice
-            + ' plus tax');
+        success('Your final price is $' + finalPrice + ' plus tax');
     }
 
     function validate(firstDiscount, secondDiscount, labelPriceVal) {
@@ -79,7 +78,7 @@ var calculator = (function () {
         } else {
             labelPrice = labelPriceVal;
         }
-        if (firstDiscount.length == 0 || isNaN(firstDiscount)) {
+        if (firstDiscount.length === 0 || isNaN(firstDiscount)) {
             danger('Discount #1 is required and must be a number');
             error = true;
         } else {

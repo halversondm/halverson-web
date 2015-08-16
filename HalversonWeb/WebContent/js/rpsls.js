@@ -1,3 +1,4 @@
+'use strict';
 $('#human :button').click(function () {
     game.clear();
     var player2 = randomizedPick.getPick();
@@ -36,7 +37,7 @@ var randomizedPick = (function () {
 
     return {
         getPick: getPick
-    }
+    };
 })();
 
 
@@ -204,8 +205,7 @@ var game = (function () {
     }
 
     function success(message, alertStyle) {
-        var html = '<div class="alert ' + alertStyle + '" role="alert">'
-            + message + '</div>';
+        var html = '<div class="alert ' + alertStyle + '" role="alert">' + message + '</div>';
         $('#alert_placeholder').html(html);
     }
 

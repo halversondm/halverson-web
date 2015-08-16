@@ -1,3 +1,5 @@
+'use strict';
+
 var abcChecklistScript = {
 
     textBoxDisabling: function (obj, id) {
@@ -158,7 +160,7 @@ var abcChecklistScript = {
 
     processArray: function (array) {
         var valueArray = [ ];
-        for (i = 0; i < array.length; i++) {
+        for (var i = 0; i < array.length; i++) {
             valueArray[i] = array[i].value;
         }
         return valueArray;
@@ -174,7 +176,7 @@ var abcChecklistScript = {
         messageModal.on('hidden.bs.modal', function () {
             $('#messageModal .modal-body').html('');
             if (reload) {
-                location.reload();
+                window.location.reload();
             }
         });
     }

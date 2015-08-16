@@ -2,4 +2,5 @@
 /.project
 /.idea/
 /build/
-/WebContent/bower_components/
+/bower_components/
+/node_modules/

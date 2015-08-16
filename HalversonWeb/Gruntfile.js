@@ -11,10 +11,10 @@ module.exports = function (grunt) {
             },
             build: {
                 files: {
-                    'build/abc.min.js': ['WebContent/js/abc.js'],
-                    'build/discountCalculator.min.js': ['WebContent/js/discountCalculator.js'],
-                    'build/gallery.min.js': ['WebContent/js/gallery.js'],
-                    'build/rpsls.min.js': ['WebContent/js/rpsls.js']
+                    'build/js/abc.min.js': ['WebContent/js/abc.js'],
+                    'build/js/discountCalculator.min.js': ['WebContent/js/discountCalculator.js'],
+                    'build/js/gallery.min.js': ['WebContent/js/gallery.js'],
+                    'build/js/rpsls.min.js': ['WebContent/js/rpsls.js']
                 }
             }
         },
@@ -41,7 +41,8 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        src: ['WebContent/**'],
+                        cwd: 'WebContent/',
+                        src: ['**', '!js/*'],
                         dest: 'build/'
                     }
                 ],

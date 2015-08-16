@@ -1,3 +1,4 @@
+'use strict';
 $(document).ready(function () {
     $('li img').on('click', function () {
         var src = $(this).attr('src');
@@ -23,27 +24,6 @@ $(document).ready(function () {
     });
 });
 
-if (window.Event)
-    document.captureEvents(Event.MOUSEUP);
-function noContextMenu() {
-    event.cancelBubble = true;
-    event.returnValue = false;
-    return false;
-}
-function noRightClick(e) {
-    if (window.Event) {
-        if (e.which == 2 || e.which == 3) {
-            return false;
-        }
-    } else if (event.button == 2 || event.button == 3) {
-        event.cancelBubble = true
-        event.returnValue = false;
-        return false;
-    }
-}
-document.oncontextmenu = noContextMenu;
-document.onmousedown = noRightClick;
-
 /* inside the modal behavior */
 $(document).on('click', 'a.controls', function () {
     var index = $(this).attr('href');
@@ -66,13 +46,13 @@ $(document).on('click', 'a.controls', function () {
     if (total === newNextIndex) {
         $('a.next').hide();
     } else {
-        $('a.next').show()
+        $('a.next').show();
     }
     //hide previous button
     if (newPrevIndex === 0) {
         $('a.previous').hide();
     } else {
-        $('a.previous').show()
+        $('a.previous').show();
     }
     return false;
 });
@@ -80,15 +60,15 @@ $(document).on('click', 'a.controls', function () {
 var generateGallery = {
     process: function (firstPhotoNumber, lastPhotoNumber, thisPage, totalPages) {
         var html = '<ul class="row"><li class="col-lg-12"></li>';
-        for (i = firstPhotoNumber; i <= lastPhotoNumber; i++) {
+        for (var i = firstPhotoNumber; i <= lastPhotoNumber; i++) {
             html += '<li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img class="img-responsive" src="./photos/photo' + [i] + '.jpg" /></li>';
         }
         html += '</ul><hr>';
-        for (i = 1; i <= totalPages; i++) {
-            if ([i] == thisPage) {
-                html += '<span class="label label-success">Page ' + [i] + '</span>&nbsp;';
+        for (var j = 1; j <= totalPages; j++) {
+            if ([j] == thisPage) {
+                html += '<span class="label label-success">Page ' + [j] + '</span>&nbsp;';
             } else {
-                html += '<a class="btn btn-primary btn-xs" href="gallery' + [i] + '.html" role="button">Page ' + [i] + '</a>&nbsp;';
+                html += '<a class="btn btn-primary btn-xs" href="gallery' + [j] + '.html" role="button">Page ' + [j] + '</a>&nbsp;';
             }
         }
         $('#photoGallery').append(html);
