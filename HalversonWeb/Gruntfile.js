@@ -27,24 +27,10 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        flatten: true,
-                        src: ['bower_components/**/*.min.js'],
-                        dest: 'build/js',
-                        filter: 'isFile'
-                    },
-                    {
-                        expand: true,
-                        flatten: true,
-                        src: ['bower_components/**/*.css'],
-                        dest: 'build/css',
-                        filter: 'isFile'
-                    },
-                    {
-                        expand: true,
                         cwd: 'WebContent/',
                         src: ['**', '!js/*'],
                         dest: 'build/'
-                    }
+                    },
                 ],
             },
         }

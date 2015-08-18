@@ -89,12 +89,11 @@ ang_discountCalculator.controller('discountCalculatorController', ['$scope', fun
             $scope.labelPrice);
         if (!calculatorService.isError()) {
             calculatorService.calculate();
-            $scope.calculationMessage = calculatorService.getMessage();
             $scope.successShow = true;
         } else {
-            $scope.calculationMessage = calculatorService.getMessage();
             $scope.errorShow = true;
         }
+        $scope.calculationMessage = calculatorService.getMessage();
     };
 
     $scope.ang_clear = function () {
