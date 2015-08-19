@@ -19,7 +19,7 @@
 			
 			assert.equal(game.getResult(), expected, message);
 		}
-		QUnit.test("game.takeTurn()", function(assert) {
+		QUnit.test("gameService.takeTurn()", function(assert) {
 			test_TakeTurn(assert, "Spock", "Rock", "Spock Vaporizes Rock", "1) Spock, 2) Rock");
 			test_TakeTurn(assert, "Spock", "Scissors", "Spock Bends Scissors", "1) Spock, 2) Scissors");
 			test_TakeTurn(assert, "Scissors", "Lizard", "Scissors Decapitate Lizard", "1) Scissors, 2) Lizard");

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="rpslsApp" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +11,10 @@
     <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
     <link href="../css/jumbotron.css" rel="stylesheet">
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../js/rpsls.js"></script>
 </head>
 <body role="document">
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -39,51 +43,67 @@
         <!--/.nav-collapse -->
     </div>
 </nav>
-<div class="container theme-showcase" role="main">
+<div class="container theme-showcase" role="main" ng-controller="rpslsController">
     <h2>Rock, Paper, Scissors, Lizard, Spock</h2>
+
     <p>Play the popular game with your computer! In this version,
         you'll be playing with Lizard and Spock too.</p>
+
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-8 btn-group img-responsive"
              role="group" id="human">
             <p>Your Pick</p>
-            <button id="Rock" type="button" class="btn btn-default">
+
+            <button id="rock" ng-click="human('rock')" type="button" class="btn btn-default"
+                    ng-class="{'btn-success' : rock}">
                 <img src="../images/rock.jpg"/>
             </button>
-            <button id="Paper" type="button" class="btn btn-default">
+            <button id="paper" ng-click="human('paper')" type="button" class="btn btn-default"
+                    ng-class="{'btn-success' : paper}">
                 <img src="../images/paper.jpg"/>
             </button>
-            <button id="Scissors" type="button" class="btn btn-default">
+            <button id="scissors" ng-click="human('scissors')" type="button" class="btn btn-default"
+                    ng-class="{'btn-success' : scissors}">
                 <img src="../images/scissors.jpg"/>
             </button>
-            <button id="Lizard" type="button" class="btn btn-default">
+            <button id="lizard" ng-click="human('lizard')" type="button" class="btn btn-default"
+                    ng-class="{'btn-success' : lizard}">
                 <img src="../images/lizard.jpg"/>
             </button>
-            <button id="Spock" type="button" class="btn btn-default">
+            <button id="spock" ng-click="human('spock')" type="button" class="btn btn-default"
+                    ng-class="{'btn-success' : spock}">
                 <img src="../images/spock.jpg"/>
             </button>
         </div>
         <div class="col-xs-6 col-md-4">
             <p>Who wins?</p>
-            <div id="alert_placeholder"></div>
+
+            <div id="alert_placeholder">
+                <div class="alert alert-success" role="alert" ng-show="gameSuccess"><b>{{winner}}</b><br/>{{explanation}}
+                </div>
+                <div class="alert alert-warning" role="alert" ng-show="gameDraw"><b>{{winner}}</b><br/>{{explanation}}
+                </div>
+                <div class="alert alert-danger" role="alert" ng-show="gameLose"><b>{{winner}}</b><br/>{{explanation}}
+                </div>
+            </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-8 btn-group img-responsive"
              role="group" id="computer">
             <p>Computer's Pick</p>
-            <button id="Rock2" type="button" class="btn btn-default" disabled>
+            <button id="Rock2" type="button" class="btn btn-default" ng-class="{'btn-danger' : rock2}" disabled>
                 <img src="../images/rock.jpg"/>
             </button>
-            <button id="Paper2" type="button" class="btn btn-default" disabled>
+            <button id="Paper2" type="button" class="btn btn-default" ng-class="{'btn-danger' : paper2}" disabled>
                 <img src="../images/paper.jpg"/>
             </button>
-            <button id="Scissors2" type="button" class="btn btn-default"
+            <button id="Scissors2" type="button" class="btn btn-default" ng-class="{'btn-danger' : scissors2}"
                     disabled>
                 <img src="../images/scissors.jpg"/>
             </button>
-            <button id="Lizard2" type="button" class="btn btn-default" disabled>
+            <button id="Lizard2" type="button" class="btn btn-default" ng-class="{'btn-danger' : lizard2}" disabled>
                 <img src="../images/lizard.jpg"/>
             </button>
-            <button id="Spock2" type="button" class="btn btn-default" disabled>
+            <button id="Spock2" type="button" class="btn btn-default" ng-class="{'btn-danger' : spock2}" disabled>
                 <img src="../images/spock.jpg"/>
             </button>
         </div>
@@ -95,8 +115,6 @@
 </div>
 <!-- /container -->
 
-<script src="../bower_components/jquery/dist/jquery.js"></script>
-<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="../js/rpsls.js"></script>
+
 </body>
 </html>

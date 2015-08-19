@@ -28,11 +28,11 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'WebContent/',
-                        src: ['**', '!js/*'],
+                        src: ['**', '!js/*', '!test/**', '!archive/**'],
                         dest: 'build/'
-                    },
-                ],
-            },
+                    }
+                ]
+            }
         }
     });
 

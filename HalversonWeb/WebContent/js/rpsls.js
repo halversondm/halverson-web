@@ -1,27 +1,92 @@
 'use strict';
-$('#human :button').click(function () {
-    game.clear();
-    var player2 = randomizedPick.getPick();
-    game.setPlayer1($(this).attr("id"));
-    game.setPlayer2(player2);
-    $(this).addClass("btn-success");
-    $('#' + player2 + '2').addClass("btn-danger");
-    game.takeTurn();
-    var message = game.getResult() + "</br>";
-    var alertStyle = "alert-success";
-    if (game.getWinner() === "Player 1") {
-        message = message + "<b>You win!</b>";
-    } else if (game.getWinner() === "Player 2") {
-        message = message + "<b>The computer wins!</b>";
-        alertStyle = "alert-danger";
-    } else {
-        message = message + "<b>" + game.getWinner() + "</b>";
-        alertStyle = "alert-warning";
-    }
-    game.success(message, alertStyle);
-});
 
-var randomizedPick = (function () {
+var rpslsApp = angular.module('rpslsApp', []);
+rpslsApp.controller('rpslsController', ['$scope', function ($scope) {
+
+    init();
+
+    $scope.human = function (choice) {
+        init();
+        var player2 = randomizedPickService.getPick();
+        gameService.setPlayer1(choice);
+        gameService.setPlayer2(player2);
+        setPlayer1Class(choice);
+        setPlayer2Class(player2 + "2");
+        gameService.takeTurn();
+        $scope.explanation = gameService.getResult();
+        if (gameService.getWinner() === "Player 1") {
+            $scope.winner = "You win!";
+            $scope.gameSuccess = true;
+        } else if (gameService.getWinner() === "Player 2") {
+            $scope.winner = "The computer wins!";
+            $scope.gameLose = true;
+        } else {
+            $scope.winner = gameService.getWinner();
+            $scope.gameDraw = true;
+        }
+    };
+
+    function init() {
+        $scope.gameSuccess = false;
+        $scope.gameDraw = false;
+        $scope.gameLose = false;
+        $scope.winner = "";
+        $scope.explanation = "";
+        $scope.rock = false;
+        $scope.lizard = false;
+        $scope.scissors = false;
+        $scope.spock = false;
+        $scope.paper = false;
+        $scope.rock2 = false;
+        $scope.lizard2 = false;
+        $scope.scissors2 = false;
+        $scope.spock2 = false;
+        $scope.paper2 = false;
+    }
+
+    function setPlayer1Class(choice) {
+        console.info(choice);
+        switch (choice) {
+            case "rock":
+                $scope.rock = true;
+                break;
+            case "spock":
+                $scope.spock = true;
+                break;
+            case "lizard":
+                $scope.lizard = true;
+                break;
+            case "scissors":
+                $scope.scissors = true;
+                break;
+            case "paper":
+                $scope.paper = true;
+                break;
+        }
+    }
+
+    function setPlayer2Class(choice) {
+        switch (choice) {
+            case "rock2":
+                $scope.rock2 = true;
+                break;
+            case "spock2":
+                $scope.spock2 = true;
+                break;
+            case "lizard2":
+                $scope.lizard2 = true;
+                break;
+            case "scissors2":
+                $scope.scissors2 = true;
+                break;
+            case "paper2":
+                $scope.paper2 = true;
+                break;
+        }
+    }
+}]);
+
+var randomizedPickService = (function () {
     var pick;
 
     function getPick() {
@@ -30,7 +95,7 @@ var randomizedPick = (function () {
     }
 
     function randomPick() {
-        var picks = ["Spock", "Lizard", "Scissors", "Paper", "Rock"];
+        var picks = ["spock", "lizard", "scissors", "paper", "rock"];
         var randomNumber = Math.floor((Math.random() * 5));
         pick = picks[randomNumber];
     }
@@ -41,7 +106,7 @@ var randomizedPick = (function () {
 })();
 
 
-var game = (function () {
+var gameService = (function () {
 
     var player1;
     var player2;
@@ -65,148 +130,130 @@ var game = (function () {
     }
 
     function paper() {
-        if (player2 === "Spock") {
-            result = "Paper Disproves Spock";
-            winner = "Player 1";
-            return;
-        }
-        if (player2 === "Lizard") {
-            result = "Lizard Eats Paper";
-            winner = "Player 2";
-            return;
-        }
-        if (player2 === "Scissors") {
-            result = "Scissors Cut Paper";
-            winner = "Player 2";
-            return;
-        }
-        if (player2 === "Rock") {
-            result = "Paper Covers Rock";
-            winner = "Player 1";
+        switch (player2) {
+            case "spock":
+                result = "Paper Disproves Spock";
+                winner = "Player 1";
+                break;
+            case "lizard":
+                result = "Lizard Eats Paper";
+                winner = "Player 2";
+                break;
+            case "scissors":
+                result = "Scissors Cut Paper";
+                winner = "Player 2";
+                break;
+            case "rock":
+                result = "Paper Covers Rock";
+                winner = "Player 1";
+                break;
         }
     }
 
     function rock() {
-        if (player2 === "Spock") {
-            result = "Spock Vaporizes Rock";
-            winner = "Player 2";
-            return;
-        }
-        if (player2 === "Lizard") {
-            result = "Rock Crushes Lizard";
-            winner = "Player 1";
-            return;
-        }
-        if (player2 === "Scissors") {
-            result = "Rock Smashes Scissors";
-            winner = "Player 1";
-            return;
-        }
-        if (player2 === "Paper") {
-            result = "Paper Covers Rock";
-            winner = "Player 2";
+        switch (player2) {
+            case "spock":
+                result = "Spock Vaporizes Rock";
+                winner = "Player 2";
+                break;
+            case "lizard":
+                result = "Rock Crushes Lizard";
+                winner = "Player 1";
+                break;
+            case "scissors":
+                result = "Rock Smashes Scissors";
+                winner = "Player 1";
+                break;
+            case "paper":
+                result = "Paper Covers Rock";
+                winner = "Player 2";
+                break;
         }
     }
 
     function spock() {
-        if (player2 === "Rock") {
-            result = "Spock Vaporizes Rock";
-            winner = "Player 1";
-            return;
-        }
-        if (player2 === "Lizard") {
-            result = "Lizard Poisons Spock";
-            winner = "Player 2";
-            return;
-        }
-        if (player2 === "Scissors") {
-            result = "Spock Bends Scissors";
-            winner = "Player 1";
-            return;
-        }
-        if (player2 === "Paper") {
-            result = "Paper Disproves Spock";
-            winner = "Player 2";
+        switch (player2) {
+            case "rock":
+                result = "Spock Vaporizes Rock";
+                winner = "Player 1";
+                break;
+            case "lizard":
+                result = "Lizard Poisons Spock";
+                winner = "Player 2";
+                break;
+            case "scissors":
+                result = "Spock Bends Scissors";
+                winner = "Player 1";
+                break;
+            case "paper":
+                result = "Paper Disproves Spock";
+                winner = "Player 2";
+                break;
         }
     }
 
     function lizard() {
-        if (player2 === "Rock") {
-            result = "Rock Crushes Lizard";
-            winner = "Player 2";
-            return;
-        }
-        if (player2 === "Spock") {
-            result = "Lizard Poisons Spock";
-            winner = "Player 1";
-            return;
-        }
-        if (player2 === "Scissors") {
-            result = "Scissors Decapitate Lizard";
-            winner = "Player 2";
-            return;
-        }
-        if (player2 === "Paper") {
-            result = "Lizard Eats Paper";
-            winner = "Player 1";
+        switch (player2) {
+            case "rock":
+                result = "Rock Crushes Lizard";
+                winner = "Player 2";
+                break;
+            case "spock":
+                result = "Lizard Poisons Spock";
+                winner = "Player 1";
+                break;
+            case "scissors":
+                result = "Scissors Decapitate Lizard";
+                winner = "Player 2";
+                break;
+            case "paper":
+                result = "Lizard Eats Paper";
+                winner = "Player 1";
+                break;
         }
     }
 
     function scissors() {
-        if (player2 === "Rock") {
-            result = "Rock Crushes Scissors";
-            winner = "Player 2";
-            return;
-        }
-        if (player2 === "Spock") {
-            result = "Spock Smashes Scissors";
-            winner = "Player 2";
-            return;
-        }
-        if (player2 === "Lizard") {
-            result = "Scissors Decapitate Lizard";
-            winner = "Player 1";
-            return;
-        }
-        if (player2 === "Paper") {
-            result = "Scissors Cut Paper";
-            winner = "Player 1";
+        switch (player2) {
+            case "rock":
+                result = "Rock Crushes Scissors";
+                winner = "Player 2";
+                break;
+            case "spock":
+                result = "Spock Smashes Scissors";
+                winner = "Player 2";
+                break;
+            case "lizard":
+                result = "Scissors Decapitate Lizard";
+                winner = "Player 1";
+                break;
+            case "paper":
+                result = "Scissors Cut Paper";
+                winner = "Player 1";
+                break;
         }
     }
 
     function takeTurn() {
         result = "Draw";
         winner = "No winner. Please try again.";
-        if (player1 === "Spock") {
-            spock();
-            return;
+        switch (player1) {
+            case "spock":
+                spock();
+                break;
+            case "rock":
+                rock();
+                break;
+            case "paper":
+                paper();
+                break;
+            case "lizard":
+                lizard();
+                break;
+            case "scissors":
+                scissors();
+                break;
         }
-        if (player1 === "Rock") {
-            rock();
-            return;
-        }
-        if (player1 === "Paper") {
-            paper();
-            return;
-        }
-        if (player1 === "Lizard") {
-            lizard();
-            return;
-        }
-        if (player1 === "Scissors") {
-            scissors();
-        }
-    }
-
-    function clear() {
-        $('#alert_placeholder').html('');
-        $('#computer :button').removeClass("btn-danger");
-        $('#human :button').removeClass("btn-success");
-    }
-
-    function success(message, alertStyle) {
-        var html = '<div class="alert ' + alertStyle + '" role="alert">' + message + '</div>';
-        $('#alert_placeholder').html(html);
     }
 
     return {
@@ -214,8 +261,6 @@ var game = (function () {
         setPlayer2: setPlayer2,
         getResult: getResult,
         takeTurn: takeTurn,
-        clear: clear,
-        success: success,
         getWinner: getWinner
     };
 })();
