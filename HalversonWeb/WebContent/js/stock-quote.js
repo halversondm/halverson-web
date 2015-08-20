@@ -1,15 +1,18 @@
 'use strict';
 
-// Declare app level module which depends on views, and components
 var stockQuote = angular.module('stockQuote', []);
 stockQuote.controller('stockQuoteController', ['$scope', '$http', function ($scope, $http) {
-    $scope.stockList = ["MSFT", "AAPL", "JPM", "AMZN", "T", "F"];
-    $scope.stocks = [];
-    $scope.stockInput = "";
-    var baseUrl = "http://dev.markitondemand.com/Api/v2/Quote/jsonp?jsoncallback=JSON_CALLBACK&symbol=";
+    init();
 
-    for (var i = 0; i < $scope.stockList.length; i++) {
-        makeCall($scope.stockList[i]);
+    function init() {
+        $scope.stockList = ["MSFT", "AAPL", "JPM", "AMZN", "T", "F"];
+        $scope.stocks = [];
+        $scope.stockInput = "";
+        var date = new Date();
+        $scope.year = date.getFullYear();
+        for (var i = 0; i < $scope.stockList.length; i++) {
+            makeCall($scope.stockList[i]);
+        }
     }
 
     $scope.submit = function () {
@@ -19,7 +22,7 @@ stockQuote.controller('stockQuoteController', ['$scope', '$http', function ($sco
     };
 
     function makeCall(stockSymbol) {
-        var url = baseUrl + stockSymbol;
+        var url = "http://dev.markitondemand.com/Api/v2/Quote/jsonp?jsoncallback=JSON_CALLBACK&symbol=" + stockSymbol;
         $http.jsonp(url).then(function (response) {
             if (response.data.Message) {
                 alert(response.data.Message);

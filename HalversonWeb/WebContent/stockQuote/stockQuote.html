@@ -45,22 +45,23 @@
 
     <p>Stock List:</p>
 
-    <div class="row">
-        <div class="col-sm-2" ng-repeat="stock in stocks">
-            <strong>Symbol: {{stock.Symbol}}</strong><br>
-            Name: {{stock.Name}}<br>
-            Last Price: {{stock.LastPrice}}<br>
-            Time: {{stock.Timestamp}}<br>
-            Market Cap: {{stock.MarketCap}}<br>
-            Change YTD: {{stock.ChangeYTD}}<br>
-            High: {{stock.High}}<br>
-            Low: {{stock.Low}}<br>
-            Open: {{stock.Open}}
+    <div class="row" ng-repeat="i in stocks track by $index" ng-if="$index % 4 == 0">
+        <div class="col-sm-3" ng-repeat="stock in [$index, $index + 1, $index + 2, $index +3]"
+             ng-if="stocks[stock] != null">
+            <strong>Symbol: {{stocks[stock].Symbol}}</strong><br>
+            Name: {{stocks[stock].Name}}<br>
+            Last Price: {{stocks[stock].LastPrice}}<br>
+            Time: {{stocks[stock].Timestamp}}<br>
+            Market Cap: {{stocks[stock].MarketCap}}<br>
+            Change YTD: {{stocks[stock].ChangeYTD}}<br>
+            High: {{stocks[stock].High}}<br>
+            Low: {{stocks[stock].Low}}<br>
+            Open: {{stocks[stock].Open}}
         </div>
     </div>
     <hr>
     <footer>
-        <p>&copy; dmhweb.org 2014</p>
+        <p>&copy; dmhweb.org 2015</p>
     </footer>
 </div>
 
