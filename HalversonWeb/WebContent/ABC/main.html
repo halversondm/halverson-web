@@ -1,346 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-<title>Halverson</title>
-<link rel="icon" href="../images/favicon.ico" />
-<link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
-<link href="../bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
-<link href="../css/jumbotron.css" rel="stylesheet" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Halverson</title>
+    <link rel="icon" href="../images/favicon.ico"/>
+    <!-- build:include bootstrap_min_css_up.html -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+    <!-- /build -->
+    <link href="../css/jumbotron.css" rel="stylesheet"/>
 </head>
 <body role="document">
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="../index.html">Halverson Web</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="../contact.html">Contact</a></li>
-					<li class="active"><a href="../resume/resume.html">Resume</a></li>
-					<li class="active"><a href="../apps.html">Apps</a></li>
-					<li class="active"><a href="../wedding.html">Wedding</a></li>
-					<li class="active"><a href="../cars.html">Auto</a></li>
-					<li class="active"><a href="../Blogs/blogs.html">Blogs</a></li>
-				</ul>
-			</div>
-			<!--/.nav-collapse -->
-		</div>
-	</nav>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">Halverson Web</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="../contact.html">Contact</a></li>
+                <li class="active"><a href="../resume/resume.html">Resume</a></li>
+                <li class="active"><a href="../apps.html">Apps</a></li>
+                <li class="active"><a href="../wedding.html">Wedding</a></li>
+                <li class="active"><a href="../cars.html">Auto</a></li>
+                <li class="active"><a href="../Blogs/blogs.html">Blogs</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
 
-	<div class="container theme-showcase" role="main">
-		<h2>ABC Checklist</h2>
-		<form id="abcChecklist">
-			<div class="row">
-				<div class="col-md-1">
-					<h4>When?</h4>
-					<hr>
-					<input class="btn btn-primary" type="button" value="Now" id="now">
-					<div id="dateTime"></div>
-				</div>
-				<div class="col-md-4">
-					<h4>Antecedent</h4>
-					<hr>
-					<b>What happened before the behavior?</b> <br>
-					<div class="radio">
-						<label> <input type="radio" name="antecedent" value="Given Direction/task, asked to do something"> Given Direction/task, asked to do something
-						</label>
-					</div>
-					<div class="radio">
-						<label> <input type="radio" name="antecedent" value="Asked to wait"> Asked to wait
-						</label>
-					</div>
-					<div class="radio">
-						<label> <input type="radio" name="antecedent" value="Difficulty with task/activity"> Difficulty with task/activity
-						</label>
-					</div>
-					<div class="radio">
-						<label> <input type="radio" name="antecedent" value="Preferred activity interrupted"> Preferred activity interrupted
-						</label>
-					</div>
-					<div class="radio">
-						<label> <input type="radio" name="antecedent" value="Activity/Item denied"> Activity/Item denied ("told no")
-						</label>
-					</div>
-					<div class="radio">
-						<label> <input type="radio" name="antecedent" value="Loud, noisy environment"> Loud, noisy environment
-						</label>
-					</div>
-					<div class="radio">
-						<label> <input type="radio" name="antecedent" value="Given assistance / correction"> Given assistance / correction
-						</label>
-					</div>
-					<div class="radio">
-						<label> <input type="radio" name="antecedent" value="Transition between locations"> Transition between locations
-						</label>
-					</div>
-					<div class="radio">
-						<label> <input type="radio" name="antecedent" value="Attention given to others"> Attention given to others
-						</label>
-					</div>
-					<div class="radio">
-						<label> <input type="radio" name="antecedent" value="Attention not given when wanted"> Attention not given when wanted
-						</label>
-					</div>
-					<div class="radio">
-						<label> <input type="radio" name="antecedent" value="Left alone (no indiv. attention)"> Left alone (no indiv. attention)
-						</label>
-					</div>
-					<div class="radio">
-						<label> <input type="radio" name="antecedent" value="Other"> Other
-						</label>
-					</div>
-					<input type="text" class="form-control" id="antecedentOther" placeholder="Enter Description" disabled> <br> <b>Location</b> <br>
-					<div class="radio-inline">
-						<label> <input type="radio" name="location" value="Home"> Home
-						</label>
-					</div>
-					<div class="radio-inline">
-						<label> <input type="radio" name="location" value="School"> School
-						</label>
-					</div>
-					<div class="radio-inline">
-						<label> <input type="radio" name="location" value="Other"> Other
-						</label>
-					</div>
-					<br> <b>People Present</b> <br>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="people" value="Mom"> Mom
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="people" value="Dad"> Dad
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="people" value="Sibling"> Sibling
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="people" value="Grandparents"> Grandparents
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="people" value="Alone"> Alone
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="people" value="Peers"> Peers
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="people" value="Other"> Other
-						</label>
-					</div>
-					<input type="text" class="form-control" id="peopleOther" placeholder="Enter Another Person Present" disabled>
-				</div>
-				<div class="col-md-3">
-					<h4>Behavior</h4>
-					<hr>
-					<b>Select all that apply</b>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Refuse to follow directions">Refuse to follow directions
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Makes verbal threats">Makes verbal threats
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Grabbing/pulling">Grabbing/pulling
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Crying/Whining">Crying/Whining
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Screaming/Yelling">Screaming/Yelling
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Scratching">Scratching
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Biting">Biting
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Spitting">Spitting
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Kicking">Kicking
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Flopping">Flopping
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Running Away">Running Away
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Destroying property">Destroying property
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Hitting Self">Hitting Self
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Hitting Others">Hitting Others
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Verbal Refusal">Verbal Refusal
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="behavior" value="Other">Other
-						</label>
-					</div>
-					<input type="text" class="form-control" id="behaviorOther" placeholder="Enter Description" disabled> <br> <b>Duration</b> <br>
-					<div class="radio-inline">
-						<label> <input type="radio" name="duration" value="< 1 min">&lt; 1 min
-						</label>
-					</div>
-					<div class="radio-inline">
-						<label> <input type="radio" name="duration" value="1 - 5 min">1 - 5 min
-						</label>
-					</div>
-					<div class="radio-inline">
-						<label> <input type="radio" name="duration" value="5 - 10 min">5 - 10 min
-						</label>
-					</div>
-					<div class="radio-inline">
-						<label> <input type="radio" name="duration" value="10 - 30 min">10 - 30 min
-						</label>
-					</div>
-					<div class="radio-inline">
-						<label> <input type="radio" name="duration" value="30 min - 1 hr">30 min - 1 hr
-						</label>
-					</div>
-					<div class="radio-inline">
-						<label> <input type="radio" name="duration" value="1 - 2 hrs">1 - 2 hrs
-						</label>
-					</div>
-					<div class="radio-inline">
-						<label> <input type="radio" name="duration" value="2 - 3 hrs">2 - 3 hrs
-						</label>
-					</div>
-					<div class="radio-inline">
-						<label> <input type="radio" name="duration" value="3+ hrs">3+ hrs
-						</label>
-					</div>
-					<br> <b>Intensity</b><br>
-					<div class="radio-inline">
-						<label> <input type="radio" name="intensity" value="Low">Low
-						</label>
-					</div>
-					<div class="radio-inline">
-						<label> <input type="radio" name="intensity" value="Medium">Medium
-						</label>
-					</div>
-					<div class="radio-inline">
-						<label> <input type="radio" name="intensity" value="High">High
-						</label>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<h4>Consequence</h4>
-					<hr>
-					<b>What happened after?</b><br>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="consequence" value="Verbal Redirection">Verbal Redirection
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="consequence" value="Physical assist/prompt">Physical assist/prompt
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="consequence" value="Ignored problem behavior">Ignored problem behavior
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="consequence" value="Kept on demand">Kept on demand
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="consequence" value="Verbal reprimand">Verbal reprimand
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="consequence" value="Removed from activity">Removed from activity
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="consequence" value="Given a different activity/task">Given a different activity/task
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="consequence" value="Lost privilege">Lost Privilege
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="consequence" value="Sent to room">Sent to room
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="consequence" value="Given a time out">Given a time out
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="consequence" value="Left alone">Left alone
-						</label>
-					</div>
-					<div class="checkbox">
-						<label> <input type="checkbox" name="consequence" value="Other">Other
-						</label>
-					</div>
-					<input type="text" class="form-control" id="consequenceOther" placeholder="Enter Description" disabled>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<input class="btn btn-success" type="submit" value="Save" id="save">
-				</div>
-			</div>
-		</form>
-		<div class="row">
-			<div class="col-sm-12">
-				<div id="message"></div>
-			</div>
-		</div>
-		<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-body"></div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
-		<!-- /.modal -->
-		<hr>
-		<footer>
-			<p>&copy; dmhweb.org 2015</p>
-		</footer>
-	</div>
-	<!-- /container -->
+<div class="container theme-showcase" role="main">
+    <h2>ABC Checklist</h2>
 
-	<script src="../bower_components/jquery/dist/jquery.js"></script>
-	<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
-	<script src="../js/abc.js"></script>
+    <form id="abcChecklist">
+        <div class="row">
+            <div class="col-md-1">
+                <h4>When?</h4>
+                <hr>
+                <input class="btn btn-primary" type="button" value="Now" id="now">
+
+                <div id="dateTime"></div>
+            </div>
+            <div class="col-md-4">
+                <h4>Antecedent</h4>
+                <hr>
+                <b>What happened before the behavior?</b> <br>
+
+                <div class="radio">
+                    <label> <input type="radio" name="antecedent" value="Given Direction/task, asked to do something">
+                        Given Direction/task, asked to do something
+                    </label>
+                </div>
+                <div class="radio">
+                    <label> <input type="radio" name="antecedent" value="Asked to wait"> Asked to wait
+                    </label>
+                </div>
+                <div class="radio">
+                    <label> <input type="radio" name="antecedent" value="Difficulty with task/activity"> Difficulty with
+                        task/activity
+                    </label>
+                </div>
+                <div class="radio">
+                    <label> <input type="radio" name="antecedent" value="Preferred activity interrupted"> Preferred
+                        activity interrupted
+                    </label>
+                </div>
+                <div class="radio">
+                    <label> <input type="radio" name="antecedent" value="Activity/Item denied"> Activity/Item denied
+                        ("told no")
+                    </label>
+                </div>
+                <div class="radio">
+                    <label> <input type="radio" name="antecedent" value="Loud, noisy environment"> Loud, noisy
+                        environment
+                    </label>
+                </div>
+                <div class="radio">
+                    <label> <input type="radio" name="antecedent" value="Given assistance / correction"> Given
+                        assistance / correction
+                    </label>
+                </div>
+                <div class="radio">
+                    <label> <input type="radio" name="antecedent" value="Transition between locations"> Transition
+                        between locations
+                    </label>
+                </div>
+                <div class="radio">
+                    <label> <input type="radio" name="antecedent" value="Attention given to others"> Attention given to
+                        others
+                    </label>
+                </div>
+                <div class="radio">
+                    <label> <input type="radio" name="antecedent" value="Attention not given when wanted"> Attention not
+                        given when wanted
+                    </label>
+                </div>
+                <div class="radio">
+                    <label> <input type="radio" name="antecedent" value="Left alone (no indiv. attention)"> Left alone
+                        (no indiv. attention)
+                    </label>
+                </div>
+                <div class="radio">
+                    <label> <input type="radio" name="antecedent" value="Other"> Other
+                    </label>
+                </div>
+                <input type="text" class="form-control" id="antecedentOther" placeholder="Enter Description" disabled>
+                <br> <b>Location</b> <br>
+
+                <div class="radio-inline">
+                    <label> <input type="radio" name="location" value="Home"> Home
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label> <input type="radio" name="location" value="School"> School
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label> <input type="radio" name="location" value="Other"> Other
+                    </label>
+                </div>
+                <br> <b>People Present</b> <br>
+
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="people" value="Mom"> Mom
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="people" value="Dad"> Dad
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="people" value="Sibling"> Sibling
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="people" value="Grandparents"> Grandparents
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="people" value="Alone"> Alone
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="people" value="Peers"> Peers
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="people" value="Other"> Other
+                    </label>
+                </div>
+                <input type="text" class="form-control" id="peopleOther" placeholder="Enter Another Person Present"
+                       disabled>
+            </div>
+            <div class="col-md-3">
+                <h4>Behavior</h4>
+                <hr>
+                <b>Select all that apply</b>
+
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Refuse to follow directions">Refuse to follow
+                        directions
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Makes verbal threats">Makes verbal threats
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Grabbing/pulling">Grabbing/pulling
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Crying/Whining">Crying/Whining
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Screaming/Yelling">Screaming/Yelling
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Scratching">Scratching
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Biting">Biting
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Spitting">Spitting
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Kicking">Kicking
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Flopping">Flopping
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Running Away">Running Away
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Destroying property">Destroying property
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Hitting Self">Hitting Self
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Hitting Others">Hitting Others
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Verbal Refusal">Verbal Refusal
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="behavior" value="Other">Other
+                    </label>
+                </div>
+                <input type="text" class="form-control" id="behaviorOther" placeholder="Enter Description" disabled>
+                <br> <b>Duration</b> <br>
+
+                <div class="radio-inline">
+                    <label> <input type="radio" name="duration" value="< 1 min">&lt; 1 min
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label> <input type="radio" name="duration" value="1 - 5 min">1 - 5 min
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label> <input type="radio" name="duration" value="5 - 10 min">5 - 10 min
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label> <input type="radio" name="duration" value="10 - 30 min">10 - 30 min
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label> <input type="radio" name="duration" value="30 min - 1 hr">30 min - 1 hr
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label> <input type="radio" name="duration" value="1 - 2 hrs">1 - 2 hrs
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label> <input type="radio" name="duration" value="2 - 3 hrs">2 - 3 hrs
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label> <input type="radio" name="duration" value="3+ hrs">3+ hrs
+                    </label>
+                </div>
+                <br> <b>Intensity</b><br>
+
+                <div class="radio-inline">
+                    <label> <input type="radio" name="intensity" value="Low">Low
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label> <input type="radio" name="intensity" value="Medium">Medium
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label> <input type="radio" name="intensity" value="High">High
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4>Consequence</h4>
+                <hr>
+                <b>What happened after?</b><br>
+
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="consequence" value="Verbal Redirection">Verbal Redirection
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="consequence" value="Physical assist/prompt">Physical
+                        assist/prompt
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="consequence" value="Ignored problem behavior">Ignored problem
+                        behavior
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="consequence" value="Kept on demand">Kept on demand
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="consequence" value="Verbal reprimand">Verbal reprimand
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="consequence" value="Removed from activity">Removed from
+                        activity
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="consequence" value="Given a different activity/task">Given a
+                        different activity/task
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="consequence" value="Lost privilege">Lost Privilege
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="consequence" value="Sent to room">Sent to room
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="consequence" value="Given a time out">Given a time out
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="consequence" value="Left alone">Left alone
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="consequence" value="Other">Other
+                    </label>
+                </div>
+                <input type="text" class="form-control" id="consequenceOther" placeholder="Enter Description" disabled>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <input class="btn btn-success" type="submit" value="Save" id="save">
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="message"></div>
+        </div>
+    </div>
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body"></div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <hr>
+    <footer>
+        <p>&copy; dmhweb.org 2015</p>
+    </footer>
+</div>
+<!-- /container -->
+<!-- build:include bootstrap_jquery_minjs_up.html -->
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<!-- /build -->
+<!-- build:js ../js/abc.min.js -->
+<script src="../js/abc.js"></script>
+<!-- /build -->
 </body>
 </html>

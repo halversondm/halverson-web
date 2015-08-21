@@ -1,8 +1,6 @@
 'use strict';
 
 module.exports = function (grunt) {
-
-    // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
@@ -10,17 +8,20 @@ module.exports = function (grunt) {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             build: {
-                files: {
-                    'build/js/abc.min.js': ['WebContent/js/abc.js'],
-                    'build/js/discountCalculator.min.js': ['WebContent/js/discountCalculator.js'],
-                    'build/js/gallery.min.js': ['WebContent/js/gallery.js'],
-                    'build/js/rpsls.min.js': ['WebContent/js/rpsls.js']
-                }
+                files: [{expand: true, cwd: 'WebContent/js/', src: ['**/*.js'], dest: 'build/js/', ext: '.min.js'}]
             }
         },
         jshint: {
             all: ['Gruntfile.js', 'WebContent/js/*.js'],
             options: {jshintrc: true}
+        },
+        processhtml: {
+            options: {
+                includeBase: 'WebContent/include/'
+            },
+            build: {
+                files: [{expand: true, cwd: 'build/', src: ['**/*.html'], dest: 'build/', ext: '.html'}]
+            }
         },
         copy: {
             main: {
@@ -28,7 +29,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'WebContent/',
-                        src: ['**', '!js/*', '!test/**', '!archive/**'],
+                        src: ['**', '!js/*', '!test/**', '!include/**'],
                         dest: 'build/'
                     }
                 ]
@@ -36,13 +37,12 @@ module.exports = function (grunt) {
         }
     });
 
-    // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-processhtml');
 
-    // Default task(s).
     grunt.file.delete('build/');
-    grunt.registerTask('default', ['jshint:all', 'uglify', 'copy']);
+    grunt.registerTask('default', ['jshint:all', 'uglify', 'copy', 'processhtml']);
 
 };
