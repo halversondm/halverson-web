@@ -57,20 +57,17 @@ $(document).on('click', 'a.controls', function () {
     return false;
 });
 
-var generateGallery = {
-    process: function (firstPhotoNumber, lastPhotoNumber, thisPage, totalPages) {
-        var html = '<ul class="row">';
-        for (var i = firstPhotoNumber; i <= lastPhotoNumber; i++) {
-            html += '<li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img class="img-responsive" src="./photos/photo' + [i] + '.jpg" /></li>';
-        }
-        html += '</ul><hr>';
-        for (var j = 1; j <= totalPages; j++) {
-            if ([j] == thisPage) {
-                html += '<span class="label label-success">Page ' + [j] + '</span>&nbsp;';
-            } else {
-                html += '<a class="btn btn-primary btn-xs" href="gallery' + [j] + '.html" role="button">Page ' + [j] + '</a>&nbsp;';
-            }
-        }
-        $('#photoGallery').append(html);
+var photoGallery = angular.module('photoGallery', []);
+photoGallery.controller('photoGalleryController', ['$scope', '$attrs', function($scope, $attrs) {
+    $scope.photoCount = [];
+    $scope.pageCount = [];
+    $scope.thispage = $attrs.thispage;
+
+    for (var i = $attrs.firstphoto; i <= $attrs.lastphoto; i++) {
+        $scope.photoCount.push(i);
     }
-};
+
+    for (var j = 1; j <= $attrs.totalpages; j++) {
+        $scope.pageCount.push(j);
+    }
+}]);

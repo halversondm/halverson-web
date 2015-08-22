@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="photoGallery" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <title>Halverson</title>
     <link rel="icon" href="../images/favicon.ico">
-    <!-- build:include bootstrap_min_css.html -->
+    <!-- build:include bootstrap_min_css_up.html -->
     <link href="../bower_components/bootswatch-dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- /build -->
@@ -43,14 +43,19 @@
     </div>
 </nav>
 
-<div class="container">
-    <h2>2004 Yamaha VStar 1100 Classic</h2>
-
-    <p>In July 2004, I bought this Yamaha from Reno's Yamaha in Kansas
-        City, Missouri. I upgraded the exhaust to Hard Krome, added a Corbin
-        based Yamaha option seat, and added some chrome goodies from Yamaha.</p>
-
-    <div id="photoGallery"></div>
+<div class="container" ng-controller="photoGalleryController" data-firstphoto="1" data-lastphoto="50" data-thispage="1" data-totalpages="6">
+    <div id="photoGallery">
+        <ul class="row">
+            <li ng-repeat="photoNumber in photoCount" class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                <img class="img-responsive" src='{{"./photos/photo" + photoNumber + ".jpg"}}' />
+            </li>
+        </ul>
+        <hr>
+        <span ng-repeat="page in pageCount">
+            <span ng-if="page == thispage" class="label label-success">{{'Page ' + page}}</span>
+            <a ng-if="page != thispage" class="btn btn-primary btn-xs" href="{{'gallery' + page + '.html'}}" role="button">{{'Page ' + page}}</a>
+        </span>
+    </div>
     <hr>
     <footer>
         <p>&copy; dmhweb.org 2014</p>
@@ -69,16 +74,13 @@
 </div>
 <!-- /.modal -->
 
-<!-- build:include bootstrap_jquery_minjs.html -->
+<!-- build:include angular_bootstrap_jquery_minjs_up.html -->
 <script src="../bower_components/jQuery/dist/jquery.js"></script>
 <script src="../bower_components/bootswatch-dist/js/bootstrap.js"></script>
+<script src="../bower_components/angular/angular.js"></script>
 <!-- /build -->
-<!-- build:js ../js/gallery.min.js -->
-<script src="../js/gallery.js"></script>
+<!-- build:js ../js/gallery_ang.min.js -->
+<script src="../js/gallery_ang.js"></script>
 <!-- /build -->
-<script>
-    $(document).ready(generateGallery.process(10, 13, 1, 1));
-</script>
 </body>
-
 </html>
