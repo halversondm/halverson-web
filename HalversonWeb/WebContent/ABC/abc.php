@@ -45,13 +45,9 @@ function insertABCChecklist($obj) {
 	}
 }
 function openConn() {
-	$servername = "localhost";
-	$username = "dmhweborg";
-	$password = "loanMe1$";
-	$dbname = "dmhweborg";
-	
+
 	// Create connection
-	$conn = new mysqli ( $servername, $username, $password, $dbname );
+	$conn = mysqli_connect();
 	
 	// Check connection
 	if ($conn->connect_error) {
@@ -59,6 +55,7 @@ function openConn() {
 	}
 	mysqli_autocommit ( $conn, FALSE );
 	// echo "Connected successfully <br>";
+	$conn->select_db("dmhweborg");
 	return $conn;
 }
 function closeConn() {
