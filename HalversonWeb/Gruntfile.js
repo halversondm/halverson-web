@@ -23,6 +23,16 @@ module.exports = function (grunt) {
                 files: [{expand: true, cwd: 'build/', src: ['**/*.html'], dest: 'build/', ext: '.html'}]
             }
         },
+        karma: {
+            unit: {
+                configFile: 'karma.conf.js'
+            },
+            continuous: {
+                configFile: 'karma.conf.js',
+                singleRun: true,
+                browsers: ['PhantomJS']
+            },
+        },
         copy: {
             main: {
                 files: [
@@ -41,8 +51,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-processhtml');
+    grunt.loadNpmTasks('grunt-karma');
 
     grunt.file.delete('build/');
-    grunt.registerTask('default', ['jshint:all', 'uglify', 'copy', 'processhtml']);
+    grunt.registerTask('default', ['jshint:all', 'karma:continuous', 'uglify', 'copy', 'processhtml']);
 
 };
