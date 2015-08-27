@@ -5,7 +5,6 @@ stockQuote.service('StockQuoteRetrieval', ['$http', function ($http) {
     this.call = function (stockSymbol) {
         var url = "http://dev.markitondemand.com/Api/v2/Quote/jsonp?jsoncallback=JSON_CALLBACK&symbol=" + stockSymbol;
         return $http.jsonp(url).then(function (response) {
-            console.info(response.data);
             return response.data;
         }, function (response) {
             var message = {};

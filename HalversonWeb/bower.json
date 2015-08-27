@@ -12,6 +12,6 @@
     "angular-mocks": "~1.4.0",
     "bootswatch-dist": "3.3.0-darkly",
     "html5-boilerplate": "~5.2.0",
-    "jQuery": "~1.11.0"
+    "jquery": "~1.11.0"
   }
 }

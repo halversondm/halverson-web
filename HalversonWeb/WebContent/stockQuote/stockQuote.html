@@ -42,9 +42,10 @@
     </div>
 </nav>
 <div class="container theme-showcase" role="main" ng-controller="stockQuoteController">
-    <p>Enter Stock to Retrieve
-        <input type="text" name="stock" ng-model="stockInput"><input type="button" value="Go!" ng-click="submit()">
-    </p>
+    <label>
+        <input type="text" name="stock" ng-model="stockInput"><input type="button" value="Go!" ng-click="submit()">Enter
+        Stock to Retrieve
+    </label>
 
     <p>Stock List:</p>
 
@@ -74,7 +75,7 @@
 </div>
 
 <!-- build:include angular_bootstrap_jquery_minjs_up.html -->
-<script src="../bower_components/jQuery/dist/jquery.js"></script>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
 <script src="../bower_components/bootswatch-dist/js/bootstrap.js"></script>
 <script src="../bower_components/angular/angular.js"></script>
 <!-- /build -->
