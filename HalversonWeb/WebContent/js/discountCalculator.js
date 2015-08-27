@@ -1,7 +1,7 @@
 'use strict';
 
-var calculatorService = (function () {
-
+var ang_discountCalculator = angular.module('ang_discountCalculator', []);
+ang_discountCalculator.service('calculatorService',[function() {
     var discount1 = 0;
     var discount2 = 0;
     var labelPrice = 0.00;
@@ -78,12 +78,8 @@ var calculatorService = (function () {
         getFinalPrice: getFinalPrice,
         getMessage: getMessage
     };
-})();
-
-var ang_discountCalculator = angular.module('ang_discountCalculator', []);
-ang_discountCalculator.controller('discountCalculatorController', ['$scope', function ($scope) {
-    init();
-
+}]);
+ang_discountCalculator.controller('discountCalculatorController', ['$scope', 'calculatorService', function ($scope, calculatorService) {
     $scope.ang_calculate = function () {
         calculatorService.validate($scope.discount1, $scope.discount2,
             $scope.labelPrice);
@@ -95,17 +91,12 @@ ang_discountCalculator.controller('discountCalculatorController', ['$scope', fun
         }
         $scope.calculationMessage = calculatorService.getMessage();
     };
-
     $scope.ang_clear = function () {
-        init();
-    };
-
-    function init() {
         $scope.errorShow = false;
         $scope.successShow = false;
         $scope.discount1 = "";
         $scope.discount2 = "";
         $scope.labelPrice = "";
         $scope.calculationMessage = [];
-    }
+    };
 }]);

@@ -16,6 +16,7 @@ describe('Discount Calculator Suite', function () {
         it('is missing the price', function () {
             var $scope = {};
             var controller = $controller('discountCalculatorController', {$scope: $scope});
+            $scope.ang_clear();
             $scope.labelPrice = "";
             $scope.ang_calculate();
             expect($scope.errorShow).toBe(true);
@@ -25,6 +26,7 @@ describe('Discount Calculator Suite', function () {
         it('has a price', function () {
             var $scope = {};
             var controller = $controller('discountCalculatorController', {$scope: $scope});
+            $scope.ang_clear();
             $scope.labelPrice = 100.23;
             $scope.ang_calculate();
             expect($scope.errorShow).toBe(true);
@@ -37,6 +39,7 @@ describe('Discount Calculator Suite', function () {
         it('is missing the discount', function () {
             var $scope = {};
             var controller = $controller('discountCalculatorController', {$scope: $scope});
+            $scope.ang_clear();
             $scope.discount1 = "";
             $scope.ang_calculate();
             expect($scope.errorShow).toBe(true);
@@ -46,6 +49,7 @@ describe('Discount Calculator Suite', function () {
         it('has a price', function () {
             var $scope = {};
             var controller = $controller('discountCalculatorController', {$scope: $scope});
+            $scope.ang_clear();
             $scope.discount1 = 50;
             $scope.ang_calculate();
             expect($scope.errorShow).toBe(true);
@@ -58,6 +62,7 @@ describe('Discount Calculator Suite', function () {
         it('is an invalid number', function () {
             var $scope = {};
             var controller = $controller('discountCalculatorController', {$scope: $scope});
+            $scope.ang_clear();
             $scope.discount2 = "xyz";
             $scope.ang_calculate();
             expect($scope.errorShow).toBe(true);
@@ -70,6 +75,7 @@ describe('Discount Calculator Suite', function () {
         it('has two of three variables for calculation', function () {
             var $scope = {};
             var controller = $controller('discountCalculatorController', {$scope: $scope});
+            $scope.ang_clear();
             $scope.labelPrice = 100.23;
             $scope.discount1 = 50;
             $scope.ang_calculate();
@@ -80,6 +86,7 @@ describe('Discount Calculator Suite', function () {
         it('has all three variables for calculation', function () {
             var $scope = {};
             var controller = $controller('discountCalculatorController', {$scope: $scope});
+            $scope.ang_clear();
             $scope.labelPrice = 100.23;
             $scope.discount1 = 50;
             $scope.discount2 = 20;
