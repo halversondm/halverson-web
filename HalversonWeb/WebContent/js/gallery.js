@@ -58,10 +58,10 @@ $(document).on('click', 'a.controls', function () {
 });
 
 var generateGallery = {
-    process: function (firstPhotoNumber, lastPhotoNumber, thisPage, totalPages) {
+    process: function (photoDirectory, firstPhotoNumber, lastPhotoNumber, thisPage, totalPages)  {
         var html = '<ul class="row">';
         for (var i = firstPhotoNumber; i <= lastPhotoNumber; i++) {
-            html += '<li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img class="img-responsive" src="./photos/photo' + [i] + '.jpg" /></li>';
+            html += '<li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img class="img-responsive" src="./' + photoDirectory + '/photo' + [i] + '.jpg" /></li>';
         }
         html += '</ul><hr>';
         for (var j = 1; j <= totalPages; j++) {

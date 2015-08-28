@@ -10,7 +10,6 @@
     <link rel="icon" href="../images/favicon.ico">
     <!-- build:include bootstrap_min_css_up.html -->
     <link href="../bower_components/bootswatch-dist/css/bootstrap.css" rel="stylesheet">
-
     <!-- /build -->
     <link href="../css/jumbotron.css" rel="stylesheet">
 </head>
@@ -31,7 +30,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="../contact.html">Contact</a></li>
                 <li class="active"><a
-                        href="../resume/resume.html">Resume</a></li>
+                        href="../resume.html">Resume</a></li>
                 <li class="active"><a href="../apps.html">Apps</a></li>
                 <li class="active"><a href="../wedding.html">Wedding</a></li>
                 <li class="active"><a href="../cars.html">Auto</a></li>
@@ -42,9 +41,8 @@
     </div>
 </nav>
 <div class="container theme-showcase" role="main" ng-controller="stockQuoteController">
-    <label>
-        <input type="text" name="stock" ng-model="stockInput"><input type="button" value="Go!" ng-click="submit()">Enter
-        Stock to Retrieve
+    <label>Enter Stock to Retrieve&nbsp;
+        <input type="text" name="stock" ng-model="stockInput"><input type="button" value="Go!" ng-click="submit()">
     </label>
 
     <p>Stock List:</p>
