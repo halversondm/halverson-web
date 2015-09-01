@@ -1,73 +1,92 @@
 'use strict';
-$(document).ready(function () {
-    $('li img').on('click', function () {
-        var src = $(this).attr('src');
-        var img = '<img src="' + src + '" class="img-responsive"/>';
 
-        var index = $(this).parent('li').index();
-        var html = '';
-        html += img;
-        html += '<div style="height:25px;clear:both;display:block;">';
-        html += '<a class="controls next" href="' + (index + 2) + '">next &raquo;</a>';
-        html += '<a class="controls previous" href="' + (index) + '">&laquo; prev</a>';
-        html += '</div>';
-
-        var myModal = $('#myModal');
-        myModal.modal();
-        myModal.on('shown.bs.modal', function () {
-            $('#myModal .modal-body').html(html);
-            $('a.controls').trigger('click');
-        });
-        myModal.on('hidden.bs.modal', function () {
-            $('#myModal .modal-body').html('');
-        });
-    });
-});
-
-/* inside the modal behavior */
-$(document).on('click', 'a.controls', function () {
-    var index = $(this).attr('href');
-    var src = $('ul.row li:nth-child(' + index + ') img').attr('src');
-    $('.modal-body img').attr('src', src);
-
-    var newPrevIndex = parseInt(index) - 1;
-    var newNextIndex = parseInt(newPrevIndex) + 2;
-
-    if ($(this).hasClass('previous')) {
-        $(this).attr('href', newPrevIndex);
-        $('a.next').attr('href', newNextIndex);
-    } else {
-        $(this).attr('href', newNextIndex);
-        $('a.previous').attr('href', newPrevIndex);
-    }
-
-    var total = $('ul.row li').length + 1;
-    //hide next button
-    if (total === newNextIndex) {
-        $('a.next').hide();
-    } else {
-        $('a.next').show();
-    }
-    //hide previous button
-    if (newPrevIndex === 0) {
-        $('a.previous').hide();
-    } else {
-        $('a.previous').show();
-    }
-    return false;
-});
-
-var photoGallery = angular.module('photoGallery', []);
-photoGallery.controller('photoGalleryController', ['$scope', '$attrs', function($scope, $attrs) {
+var photoGallery = angular.module('photoGallery', ['ui.bootstrap']);
+photoGallery.controller('photoGalleryController', ['$scope', '$attrs', '$modal', '$log', function ($scope, $attrs, $modal, $log) {
     $scope.photoCount = [];
-    $scope.pageCount = [];
-    $scope.thispage = $attrs.thispage;
+    $scope.buttons = [];
 
-    for (var i = $attrs.firstphoto; i <= $attrs.lastphoto; i++) {
-        $scope.photoCount.push(i);
+    var totalPhotos = Number($attrs.totalphotos);
+    var perPage = Number($attrs.perpage);
+    // determine # of buttons needed
+    $scope.totalPages = Math.round(totalPhotos / perPage);
+    for (var button = 1; button <= $scope.totalPages; button++) {
+        $scope.buttons.push(button);
+    }
+    // determine the first photo and the last photo to appear on the page/button
+    var firstPhoto = [];
+    var lastPhoto = [];
+    for (var page = 0; page <= $scope.totalPages; page++) {
+        if (page === 0) {
+            firstPhoto.push(1);
+            lastPhoto.push(perPage);
+        } else {
+            var nextFirst = lastPhoto[page - 1] + 1;
+            var nextLast = nextFirst + perPage;
+            if (nextLast > totalPhotos) {
+                nextLast = totalPhotos;
+            }
+            firstPhoto.push(nextFirst);
+            lastPhoto.push(nextLast);
+        }
     }
 
-    for (var j = 1; j <= $attrs.totalpages; j++) {
-        $scope.pageCount.push(j);
-    }
+
+    $scope.click = function (pageNumber) {
+        $scope.photoCount = [];
+        $scope.firstPagePhoto = firstPhoto[pageNumber - 1];
+        $scope.lastPagePhoto = lastPhoto[pageNumber - 1];
+        for (var i = $scope.firstPagePhoto; i <= $scope.lastPagePhoto; i++) {
+            $scope.photoCount.push(i);
+        }
+        $scope.currentTpl = "/generateGallery.html";
+    };
+
+    $scope.getTemplate = function () {
+        return $scope.currentTpl;
+    };
+
+    $scope.items = ['item1', 'item2', 'item3'];
+
+    $scope.animationsEnabled = false;
+
+    $scope.open = function (size) {
+
+        var modalInstance = $modal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'pictureModal.html',
+            controller: 'ModalInstanceCtrl',
+            size: size,
+            resolve: {
+                items: function () {
+                    return $scope.items;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+
+    $scope.toggleAnimation = function () {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+}]);
+
+photoGallery.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items', function ($scope, $modalInstance, items) {
+
+    $scope.items = items;
+    $scope.selected = {
+        item: $scope.items[0]
+    };
+
+    $scope.ok = function () {
+        $modalInstance.close($scope.selected.item);
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
 }]);
