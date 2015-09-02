@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +10,10 @@
     <link rel="icon" href="images/favicon.ico">
     <!-- build:include bootstrap_min_css.html -->
     <link href="bower_components/bootswatch-dist/css/bootstrap.css" rel="stylesheet">
-
     <!-- /build -->
     <link href="css/jumbotron.css" rel="stylesheet">
 </head>
-
 <body role="document">
-
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -103,18 +100,14 @@
             </p>
         </div>
     </div>
-
-    <hr>
-
-    <footer>
-        <p>&copy; dmhweb.org 2014</p>
-    </footer>
+    <div id="pageFooter" ng-include="'./templates/footer.html'"></div>
 </div>
 <!-- /container -->
 
-<!-- build:include bootstrap_jquery_minjs.html -->
+<!-- build:include angular_bootstrap_jquery_minjs.html -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/bootswatch-dist/js/bootstrap.js"></script>
+<script src="bower_components/angular/angular.js"></script>
 <!-- /build -->
 </body>
 </html>

@@ -10,37 +10,12 @@
     <link rel="icon" href="../images/favicon.ico">
     <!-- build:include bootstrap_min_css_up.html -->
     <link href="../bower_components/bootswatch-dist/css/bootstrap.css" rel="stylesheet">
-
     <!-- /build -->
     <link href="../css/jumbotron.css" rel="stylesheet">
 </head>
 <body role="document">
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed"
-                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="../index.html">Halverson Web</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="../contact.html">Contact</a></li>
-                <li class="active"><a
-                        href="../resume.html">Resume</a></li>
-                <li class="active"><a href="../apps.html">Apps</a></li>
-                <li class="active"><a href="../wedding.html">Wedding</a></li>
-                <li class="active"><a href="../cars.html">Auto</a></li>
-                <li class="active"><a href="../blogs.html">Blogs</a></li>
-            </ul>
-        </div>
-        <!--/.nav-collapse -->
-    </div>
-</nav>
+<div id="navBarDirectory" ng-include="'../templates/navBarDirectory.html'"></div>
+
 <div class="container theme-showcase" role="main" ng-controller="rpslsController">
     <h2>Rock, Paper, Scissors, Lizard, Spock</h2>
 
@@ -106,10 +81,7 @@
             </button>
         </div>
     </div>
-    <hr>
-    <footer>
-        <p>&copy; dmhweb.org 2014</p>
-    </footer>
+    <div id="pageFooter" ng-include="'../templates/footer.html'"></div>
 </div>
 <!-- /container -->
 <!-- build:include angular_bootstrap_jquery_minjs_up.html -->
