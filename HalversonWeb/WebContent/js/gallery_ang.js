@@ -1,21 +1,21 @@
 'use strict';
 
 var photoGallery = angular.module('photoGallery', ['ui.bootstrap']);
-photoGallery.controller('photoGalleryController', ['$scope', '$attrs', '$modal', '$log', function ($scope, $attrs, $modal, $log) {
-    $scope.photoCount = [];
+photoGallery.controller('photoGalleryController', ['$scope', '$attrs', '$modal', function ($scope, $attrs, $modal) {
+    $scope.photoArray = [];
     $scope.buttons = [];
+    $scope.fileprefix = $attrs.fileprefix;
+    $scope.filesuffix = $attrs.filesuffix;
 
     var totalPhotos = Number($attrs.totalphotos);
     var perPage = Number($attrs.perpage);
-    // determine # of buttons needed
-    $scope.totalPages = Math.round(totalPhotos / perPage);
-    for (var button = 1; button <= $scope.totalPages; button++) {
-        $scope.buttons.push(button);
-    }
-    // determine the first photo and the last photo to appear on the page/button
+    // determine the first photo and the last photo to appear on each page/button.
+    // the equal division of photos results in the number of buttons needed.
     var firstPhoto = [];
     var lastPhoto = [];
-    for (var page = 0; page <= $scope.totalPages; page++) {
+    var go = true;
+    var page = 0;
+    while (go) {
         if (page === 0) {
             firstPhoto.push(1);
             lastPhoto.push(perPage);
@@ -28,65 +28,75 @@ photoGallery.controller('photoGalleryController', ['$scope', '$attrs', '$modal',
             firstPhoto.push(nextFirst);
             lastPhoto.push(nextLast);
         }
+
+        $scope.buttons.push(page + 1);
+        if (lastPhoto[page] === totalPhotos) {
+            go = false;
+        } else {
+            page++;
+        }
     }
 
+    buildArray(1);
 
     $scope.click = function (pageNumber) {
-        $scope.photoCount = [];
-        $scope.firstPagePhoto = firstPhoto[pageNumber - 1];
-        $scope.lastPagePhoto = lastPhoto[pageNumber - 1];
-        for (var i = $scope.firstPagePhoto; i <= $scope.lastPagePhoto; i++) {
-            $scope.photoCount.push(i);
+        buildArray(pageNumber);
+    };
+
+    function buildArray(pageNumber) {
+        $scope.photoArray = [];
+        for (var i = firstPhoto[pageNumber - 1]; i <= lastPhoto[pageNumber - 1]; i++) {
+            var source = $scope.fileprefix + i + $scope.filesuffix;
+            $scope.photoArray.push(source);
         }
-        $scope.currentTpl = "/generateGallery.html";
-    };
+    }
 
-    $scope.getTemplate = function () {
-        return $scope.currentTpl;
-    };
-
-    $scope.items = ['item1', 'item2', 'item3'];
-
-    $scope.animationsEnabled = false;
-
-    $scope.open = function (size) {
-
-        var modalInstance = $modal.open({
-            animation: $scope.animationsEnabled,
+    $scope.open = function (index) {
+        $modal.open({
+            animation: false,
             templateUrl: 'pictureModal.html',
             controller: 'ModalInstanceCtrl',
-            size: size,
+            size: 'lg',
             resolve: {
-                items: function () {
-                    return $scope.items;
+                photo: function () {
+                    return {
+                        "index": index,
+                        "photoArray": $scope.photoArray
+                    };
                 }
             }
         });
-
-        modalInstance.result.then(function (selectedItem) {
-            $scope.selected = selectedItem;
-        }, function () {
-            $log.info('Modal dismissed at: ' + new Date());
-        });
-    };
-
-    $scope.toggleAnimation = function () {
-        $scope.animationsEnabled = !$scope.animationsEnabled;
     };
 }]);
 
-photoGallery.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items', function ($scope, $modalInstance, items) {
+photoGallery.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'photo', function ($scope, $modalInstance, photo) {
 
-    $scope.items = items;
-    $scope.selected = {
-        item: $scope.items[0]
+    $scope.photo = Number(photo.index);
+    $scope.photoArray = photo.photoArray;
+    showHideButtons();
+
+    $scope.prev = function () {
+        $scope.photo--;
+        showHideButtons();
     };
 
-    $scope.ok = function () {
-        $modalInstance.close($scope.selected.item);
+    $scope.next = function () {
+        $scope.photo++;
+        showHideButtons();
     };
 
-    $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-    };
+    function showHideButtons() {
+        $scope.modalPhoto = $scope.photoArray[$scope.photo];
+        if ($scope.photo === 0) {
+            $scope.hidePrevious = true;
+        } else {
+            $scope.hidePrevious = false;
+        }
+        if ($scope.photo === ($scope.photoArray.length - 1)) {
+            $scope.hideNext = true;
+        } else {
+            $scope.hideNext = false;
+        }
+    }
+
 }]);

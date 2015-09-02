@@ -20,6 +20,11 @@ ul li img {
 	text-align: right;
 }
 
+.previous {
+	float: left;
+	text-align: left;
+}
+
 .modal-body {
 	padding: 5px !important;
 }

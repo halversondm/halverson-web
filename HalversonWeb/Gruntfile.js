@@ -54,6 +54,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-karma');
 
     grunt.file.delete('build/');
-    grunt.registerTask('default', ['jshint:all', 'karma:continuous', 'uglify', 'copy', 'processhtml']);
+    grunt.registerTask('default', ['jshint:all', 'karma:unit', 'uglify', 'copy', 'processhtml']);
 
 };

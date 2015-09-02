@@ -1,0 +1,10 @@
+<div>
+    <div id="photoGallery">
+        <ul class="row">
+            <li ng-repeat="photo in photoArray" class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                <img ng-click="open($index)" class="img-responsive" ng-src='{{photo}}'/>
+            </li>
+        </ul>
+        <hr>
+    </div>
+</div>
