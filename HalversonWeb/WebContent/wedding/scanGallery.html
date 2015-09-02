@@ -19,7 +19,7 @@
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- /build -->
-    <!-- build:js ../js/gallery.min.js -->
+    <!-- build:js ../js/gallery_ang.min.js -->
     <script src="../js/gallery_ang.js"></script>
     <!-- /build -->
 </head>
@@ -55,11 +55,14 @@
      data-fileprefix="./scanPhotos/photo" data-filesuffix=".jpg" role="main">
     <script type="text/ng-template" id="pictureModal.html">
         <div class="modal-body">
-            <img ng-src="{{modalPhoto}}" class="img-responsive" />
+            <img ng-src="{{modalPhoto}}" class="img-responsive"/>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary previous" type="button" ng-hide="hidePrevious" ng-click="prev()">&laquo; prev</button>
-            <button class="btn btn-primary next" type="button" ng-hide="hideNext" ng-click="next()">next &raquo;</button>
+            <button class="btn btn-primary previous" type="button" ng-hide="hidePrevious" ng-click="prev()">&laquo;
+                prev
+            </button>
+            <button class="btn btn-primary next" type="button" ng-hide="hideNext" ng-click="next()">
+                next &raquo;</button>
         </div>
     </script>
     <div id="tpl-content" ng-include src="'../templates/generateGallery.html'"></div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="photoGallery" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,42 +42,38 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container theme-showcase" ng-controller="photoGalleryController" data-perpage="4" data-totalphotos="4"
+     data-fileprefix="./yamahaPhotos/photo" data-filesuffix=".jpg">
     <h2>2004 Yamaha VStar 1100 Classic</h2>
 
     <p>In July 2004, I bought this Yamaha from Reno's Yamaha in Kansas
         City, Missouri. I upgraded the exhaust to Hard Krome, added a Corbin
         based Yamaha option seat, and added some chrome goodies from Yamaha.</p>
-
-    <div id="photoGallery"></div>
-    <hr>
+    <script type="text/ng-template" id="pictureModal.html">
+        <div class="modal-body">
+            <img ng-src="{{modalPhoto}}" class="img-responsive"/>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary previous" type="button" ng-hide="hidePrevious" ng-click="prev()">&laquo;
+                prev
+            </button>
+            <button class="btn btn-primary next" type="button" ng-hide="hideNext" ng-click="next()">
+                next &raquo;</button>
+        </div>
+    </script>
+    <div id="tpl-content" ng-include src="'../templates/generateGallery.html'"></div>
     <footer>
         <p>&copy; dmhweb.org 2014</p>
     </footer>
 </div>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body"></div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-
-<!-- build:include bootstrap_jquery_minjs_up.html -->
+<!-- build:include angular_bootstrap_jquery_minjs_up.html -->
 <script src="../bower_components/jquery/dist/jquery.js"></script>
 <script src="../bower_components/bootswatch-dist/js/bootstrap.js"></script>
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <!-- /build -->
-<!-- build:js ../js/gallery.min.js -->
-<script src="../js/gallery.js"></script>
+<!-- build:js ../js/gallery_ang.min.js -->
+<script src="../js/gallery_ang.js"></script>
 <!-- /build -->
-<script>
-    $(document).ready(generateGallery.process("motoPhotos", 10, 13, 1, 1));
-</script>
 </body>
-
 </html>
