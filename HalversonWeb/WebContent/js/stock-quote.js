@@ -18,8 +18,6 @@ stockQuote.controller('stockQuoteController', ['$scope', 'StockQuoteRetrieval', 
     $scope.stockList = ["MSFT", "AAPL", "JPM", "AMZN", "T", "F"];
     $scope.stocks = [];
     $scope.stockInput = "";
-    var date = new Date();
-    $scope.year = date.getFullYear();
     var makeCall = function(stockSymbol) {
         StockQuoteRetrieval.call(stockSymbol).then(function (data) {
             $scope.stocks.push(data);

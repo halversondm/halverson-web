@@ -80,6 +80,8 @@ ang_discountCalculator.service('calculatorService',[function() {
     };
 }]);
 ang_discountCalculator.controller('discountCalculatorController', ['$scope', 'calculatorService', function ($scope, calculatorService) {
+    clear();
+
     $scope.ang_calculate = function () {
         calculatorService.validate($scope.discount1, $scope.discount2,
             $scope.labelPrice);
@@ -91,12 +93,17 @@ ang_discountCalculator.controller('discountCalculatorController', ['$scope', 'ca
         }
         $scope.calculationMessage = calculatorService.getMessage();
     };
+
     $scope.ang_clear = function () {
+        clear();
+    };
+
+    function clear() {
         $scope.errorShow = false;
         $scope.successShow = false;
         $scope.discount1 = "";
         $scope.discount2 = "";
         $scope.labelPrice = "";
         $scope.calculationMessage = [];
-    };
+    }
 }]);

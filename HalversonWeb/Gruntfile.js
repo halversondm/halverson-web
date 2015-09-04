@@ -44,6 +44,14 @@ module.exports = function (grunt) {
                     }
                 ]
             }
+        },
+        protractor: {
+            options: {
+                configFile: "e2e-tests/protractor.conf.js",
+                keepAlive: false, // If false, the grunt process stops when the test fails.
+                noColor: false // If true, protractor will not use colors in its output.
+            },
+            all: {}
         }
     });
 
@@ -52,8 +60,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-processhtml');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-protractor-runner');
 
     grunt.file.delete('build/');
-    grunt.registerTask('default', ['jshint:all', 'karma:continuous', 'uglify', 'copy', 'processhtml']);
+    grunt.registerTask('default', ['jshint:all', 'karma:continuous', 'protractor', 'uglify', 'copy', 'processhtml']);
 
 };

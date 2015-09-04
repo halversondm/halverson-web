@@ -159,7 +159,7 @@ var abcChecklistScript = {
     },
 
     processArray: function (array) {
-        var valueArray = [ ];
+        var valueArray = [];
         for (var i = 0; i < array.length; i++) {
             valueArray[i] = array[i].value;
         }
