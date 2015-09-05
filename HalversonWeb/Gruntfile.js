@@ -24,10 +24,10 @@ module.exports = function (grunt) {
             }
         },
         karma: {
-            unit: {
+            continuous: {
                 configFile: 'karma.conf.js'
             },
-            continuous: {
+            single: {
                 configFile: 'karma.conf.js',
                 singleRun: true,
                 browsers: ['PhantomJS']
@@ -63,6 +63,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-protractor-runner');
 
     grunt.file.delete('build/');
-    grunt.registerTask('default', ['jshint:all', 'karma:continuous', 'protractor', 'uglify', 'copy', 'processhtml']);
+    grunt.registerTask('default', ['jshint:all', 'karma:single', 'protractor', 'uglify', 'copy', 'processhtml']);
 
 };

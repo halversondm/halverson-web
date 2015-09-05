@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="base64" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Halverson</title>
+    <link rel="icon" href="../images/favicon.ico"/>
+    <!-- build:include bootstrap_min_css_up.html -->
+    <link href="../bower_components/bootswatch-dist/css/bootstrap.css" rel="stylesheet">
+    <!-- /build -->
+    <link href="../css/jumbotron.css" rel="stylesheet"/>
+</head>
+<body role="document">
+<div id="navBarDirectory" ng-include="'../templates/navBarDirectory.html'"></div>
+<div class="container theme-showcase" role="main">
+    <h4>An all Bootstrap and AngularJS implementation of converting your data to and from Base64 encoding. No tracking of
+        your data is done. No calls to other services.  It's all in your browser.</h4>
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+            <a href="#encodeTab" aria-controls="home" role="tab" data-toggle="tab">Encode</a>
+        </li>
+        <li role="presentation">
+            <a href="#decodeTab" aria-controls="home" role="tab" data-toggle="tab">Decode</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="encodeTab">
+            <form class="form-horizontal" role="form" ng-controller="encoder">
+                <h2>Encode Data to Base64</h2>
+
+                <div class="form-group">
+                    <label for="encodeInput" class="col-sm-2 control-label">Un-encoded</label>
+
+                    <div class="input-group col-sm-10">
+                        <textarea class="form-control" id="encodeInput" ng-model="encodeInput" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="encodeOutput" class="col-sm-2 control-label">Encoded</label>
+
+                    <div class="input-group col-sm-10">
+                        <textarea class="form-control" id="encodeOutput" readonly>{{encodeOutput}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button id="encode" class="btn btn-primary btn-sm" ng-click="goEncode()" type="button">Encode
+                        </button>
+                        <button class="btn btn-danger btn-sm" ng-click="clear()" type="button">Clear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="decodeTab">
+            <form class="form-horizontal" role="form" ng-controller="decoder">
+                <h2>Decode Base 64 to Data</h2>
+
+                <div class="form-group">
+                    <label for="decodeInput" class="col-sm-2 control-label">Encoded</label>
+
+                    <div class="input-group col-sm-10">
+                        <textarea class="form-control" id="decodeInput" ng-model="decodeInput" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="decodeOutput" class="col-sm-2 control-label">Un-encoded</label>
+
+                    <div class="input-group col-sm-10">
+                        <textarea class="form-control" id="decodeOutput" readonly>{{decodeOutput}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button id="decode" class="btn btn-primary btn-sm" ng-click="goDecode()" type="button">Decode
+                        </button>
+                        <button class="btn btn-danger btn-sm" ng-click="clear()" type="button">Clear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="pageFooter" ng-include="'../templates/footer.html'"></div>
+</div>
+<!-- build:include angular_bootstrap_jquery_minjs_up.html -->
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/bootswatch-dist/js/bootstrap.js"></script>
+<script src="../bower_components/angular/angular.js"></script>
+<!-- /build -->
+<!-- build:js ../js/base64.min.js -->
+<script src="../js/base64.js"></script>
+<!-- /build -->
+</body>
+</html>
