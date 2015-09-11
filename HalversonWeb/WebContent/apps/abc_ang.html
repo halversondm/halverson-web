@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html ng-app="abcApp" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Halverson</title>
+    <link rel="icon" href="../images/favicon.ico"/>
+    <!-- build:include bootstrap_min_css_up.html -->
+    <link href="../bower_components/bootswatch-dist/css/bootstrap.css" rel="stylesheet">
+    <!-- /build -->
+    <link href="../css/jumbotron.css" rel="stylesheet"/>
+</head>
+<body role="document">
+<div id="navBarDirectory" ng-include="'../templates/navBarDirectory.html'"></div>
+
+<div class="container theme-showcase" role="main">
+    <h2>ABC Checklist</h2>
+
+    <form name="form" class="css-form" novalidate id="abcChecklist" ng-controller="abcController">
+        <div class="row">
+            <div class="col-md-1">
+                <h4>When?</h4>
+                <hr>
+                <input class="btn btn-primary" ng-click="getTime()" type="button" value="Now" id="now">
+
+                <div id="dateTime">{{user.when}}</div>
+            </div>
+            <div class="col-md-4">
+                <h4>Antecedent</h4>
+                <hr>
+                <b>What happened before the behavior?</b> <br>
+
+                <div class="radio" ng-repeat="antecedent in antecedents">
+                    <label> <input type="radio" ng-model="user.antecedent" ng-click="antecedentOtherText('')"
+                                   value="{{antecedent}}">{{antecedent}}
+                    </label>
+                </div>
+                <div class="radio">
+                    <label> <input type="radio" name="antecedent" ng-model="user.antecedent" value="Other"
+                                   ng-click="antecedentOtherText('Other')"> Other
+                    </label>
+                </div>
+                <input type="text" class="form-control" id="antecedentOther" ng-model="user.antecedentOther"
+                       placeholder="Enter Description" ng-disabled="antecedentOtherDisabled">
+                <br> <b>Location</b> <br>
+
+                <div class="radio-inline" ng-repeat="location in locations">
+                    <label> <input type="radio" ng-model="user.location" value="{{location}}">{{location}}
+                    </label>
+                </div>
+                <br> <b>People Present</b> <br>
+
+                <div class="checkbox" ng-repeat="person in people">
+                    <label> <input type="checkbox" checklist-model="user.people" checklist-value="person">
+                        {{person}}
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="people" checklist-model="user.people" value="Other"
+                                   ng-click="peopleOtherText()"> Other
+                    </label>
+                </div>
+                <input type="text" class="form-control" id="peopleOther" ng-model="user.peopleOther"
+                       placeholder="Enter Another Person Present"
+                       ng-disabled="peopleOtherDisabled">
+            </div>
+            <div class="col-md-3">
+                <h4>Behavior</h4>
+                <hr>
+                <b>Select all that apply</b>
+
+                <div class="checkbox" ng-repeat="behavior in behaviors">
+                    <label> <input type="checkbox" checklist-model="user.behavior"
+                                   checklist-value="behavior">{{behavior}}
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" checklist-model="user.behavior"
+                                   ng-click="behaviorOtherText()" value="Other">Other
+                    </label>
+                </div>
+                <input type="text" class="form-control" id="behaviorOther" ng-model="user.behaviorOther"
+                       placeholder="Enter Description" ng-disabled="behaviorOtherDisabled">
+                <br> <b>Duration</b> <br>
+
+                <div class="radio-inline" ng-repeat="duration in durations">
+                    <label> <input type="radio" ng-model="user.duration" value="{{duration}}">{{duration}}
+                    </label>
+                </div>
+                <br> <b>Intensity</b><br>
+
+                <div class="radio-inline" ng-repeat="intensity in intensities">
+                    <label> <input type="radio" ng-model="user.intensity" value="{{intensity}}">{{intensity}}
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4>Consequence</h4>
+                <hr>
+                <b>What happened after?</b><br>
+
+                <div class="checkbox" ng-repeat="consequence in consequences">
+                    <label> <input type="checkbox" checklist-model="user.consequence"
+                                   checklist-value="consequence">{{consequence}}
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" checklist-model="user.consequence" ng-click="consequenceOtherText()"
+                                   value="Other">Other
+                    </label>
+                </div>
+                <input type="text" class="form-control" id="consequenceOther" ng-model="user.consequenceOther"
+                       placeholder="Enter Description" ng-disabled="consequenceOtherDisabled">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-12">
+                <input class="btn btn-success" type="submit" ng-click="save(user)" value="Save" id="save">
+                <input class="btn btn-danger" type="reset" ng-click="reset()" value="Reset" id="reset">
+            </div>
+        </div>
+    </form>
+    <script type="text/ng-template" id="messageModal.html">
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="message in messages">{{message}}</li>
+            </ul>
+            <div ng-bind-html="phpHtml"></div>
+        </div>
+    </script>
+    <div id="pageFooter" ng-include="'../templates/footer.html'"></div>
+</div>
+<!-- /container -->
+<!-- build:include angular_bootstrap_jquery_minjs_up.html -->
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/bootswatch-dist/js/bootstrap.js"></script>
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<!-- /build -->
+<script src="../bower_components/checklist-model/checklist-model.js"></script>
+<!-- build:js ../js/abc_ang.min.js -->
+<script src="../js/abc_ang.js"></script>
+<!-- /build -->
+</body>
+</html>
