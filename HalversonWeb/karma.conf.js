@@ -13,6 +13,7 @@ module.exports = function (config) {
             'WebContent/bower_components/jQuery/dist/jquery.js',
             'WebContent/bower_components/bootswatch-dist/js/bootstrap.js',
             'WebContent/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+            'WebContent/bower_components/checklist-model/checklist-model.js',
             'WebContent/js/*.js',
             'WebContent/test/*.js'
         ],

@@ -22,7 +22,7 @@ abcApp.controller('abcController', ['$scope', '$http', '$modal', function ($scop
     $scope.save = function (user) {
         $scope.abc = angular.copy(user);
         if (!validSave()) {
-            $scope.open();
+            $scope.open(false);
         } else {
             postToPhp();
         }
@@ -75,7 +75,7 @@ abcApp.controller('abcController', ['$scope', '$http', '$modal', function ($scop
         }
     };
 
-    $scope.open = function () {
+    $scope.open = function (reset) {
         var modalInstance = $modal.open({
             animation: false,
             templateUrl: 'messageModal.html',
@@ -91,13 +91,15 @@ abcApp.controller('abcController', ['$scope', '$http', '$modal', function ($scop
             }
         });
 
-        modalInstance.result.then($scope.reset, $scope.reset);
+        if (reset) {
+            modalInstance.result.then($scope.reset, $scope.reset);
+        }
     };
 
     function postToPhp() {
         $http.post('abc.php', JSON.stringify($scope.abc)).then(function (response) {
             $scope.phpHTML = response.data;
-            $scope.open();
+            $scope.open(true);
         }, function (response) {
             $scope.messages.push(response.data);
             console.log(response);
