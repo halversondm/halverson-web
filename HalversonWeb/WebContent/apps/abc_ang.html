@@ -54,12 +54,14 @@
                 <br> <b>People Present</b> <br>
 
                 <div class="checkbox" ng-repeat="person in people">
-                    <label> <input type="checkbox" checklist-model="user.people" checklist-value="person">
+                    <label> <input id="{{person}}" type="checkbox" checklist-model="user.people"
+                                   checklist-value="person">
                         {{person}}
                     </label>
                 </div>
                 <div class="checkbox">
-                    <label> <input type="checkbox" name="people" checklist-model="user.people" value="Other"
+                    <label> <input id="otherPeople" type="checkbox" name="people" checklist-model="user.people"
+                                   value="Other"
                                    ng-click="peopleOtherText()"> Other
                     </label>
                 </div>
@@ -73,12 +75,12 @@
                 <b>Select all that apply</b>
 
                 <div class="checkbox" ng-repeat="behavior in behaviors">
-                    <label> <input type="checkbox" checklist-model="user.behavior"
+                    <label> <input id="{{behavior}}" type="checkbox" checklist-model="user.behavior"
                                    checklist-value="behavior">{{behavior}}
                     </label>
                 </div>
                 <div class="checkbox">
-                    <label> <input type="checkbox" checklist-model="user.behavior"
+                    <label> <input id="otherBehavior" type="checkbox" checklist-model="user.behavior"
                                    ng-click="behaviorOtherText()" value="Other">Other
                     </label>
                 </div>
@@ -103,12 +105,13 @@
                 <b>What happened after?</b><br>
 
                 <div class="checkbox" ng-repeat="consequence in consequences">
-                    <label> <input type="checkbox" checklist-model="user.consequence"
+                    <label> <input id="{{consequence}}" type="checkbox" checklist-model="user.consequence"
                                    checklist-value="consequence">{{consequence}}
                     </label>
                 </div>
                 <div class="checkbox">
-                    <label> <input type="checkbox" checklist-model="user.consequence" ng-click="consequenceOtherText()"
+                    <label> <input id="otherConsequence" type="checkbox" checklist-model="user.consequence"
+                                   ng-click="consequenceOtherText()"
                                    value="Other">Other
                     </label>
                 </div>
@@ -117,6 +120,7 @@
             </div>
         </div>
         <br>
+
         <div class="row">
             <div class="col-sm-12">
                 <input class="btn btn-success" type="submit" ng-click="save(user)" value="Save" id="save">

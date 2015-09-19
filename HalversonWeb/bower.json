@@ -8,10 +8,10 @@
   "dependencies": {
     "angular": "~1.4.0",
     "angular-bootstrap": "~0.13.3",
-    "angular-route": "~1.4.0",
     "angular-loader": "~1.4.0",
     "angular-mocks": "~1.4.0",
-    "bootswatch-dist": "3.3.0-darkly",
+    "angular-route": "~1.4.0",
+    "bootswatch-dist": "darkly",
     "html5-boilerplate": "~5.2.0",
     "jquery": "~1.11.0"
   }
