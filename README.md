@@ -1,4 +1,4 @@
-halverson-web-angularjs
+halverson-web
 ========
 
-My website written in Angular JS.  This site is deprecated.
+My website written in plain HTML, jQuery and PHP.  This site is deprecated.
